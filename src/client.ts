@@ -3,9 +3,7 @@ import {
   TranscriptionOptions,
   TranscriptionResult,
   RealTimeTranscriptionOptions,
-  RealTimeTranscriptionResult,
   TranscriptionResponse,
-  AudioUploadResponse,
   GladiaError,
 } from './types';
 
