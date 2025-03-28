@@ -1,6 +1,6 @@
 # Gladia TypeScript SDK
 
-Official TypeScript SDK for Gladia - State-of-the-art Speech to Text API
+Unofficial TypeScript SDK for Gladia - State-of-the-art Speech to Text API
 
 [![npm version](https://img.shields.io/npm/v/gladia.svg)](https://www.npmjs.com/package/gladia)
 [![GitHub](https://img.shields.io/github/license/alexisbouchez/gladia.ts)](https://github.com/alexisbouchez/gladia.ts/blob/main/LICENSE)
