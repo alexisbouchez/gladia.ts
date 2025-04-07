@@ -201,9 +201,10 @@ export class GladiaClient {
    */
   async transcribeVideo(
     videoUrl: string,
-    options: TranscriptionOptions = {}
+    options: TranscriptionOptions = {},
+    waitOptions: { pollingInterval?: number; maxRetries?: number } = {}
   ): Promise<TranscriptionResult> {
-    return this.transcribeAudio(videoUrl, options);
+    return this.transcribeAudio(videoUrl, options, waitOptions);
   }
 
   /**
@@ -211,7 +212,8 @@ export class GladiaClient {
    */
   async transcribeFile(
     file: File | Blob,
-    options: TranscriptionOptions = {}
+    options: TranscriptionOptions = {},
+    waitOptions: { pollingInterval?: number; maxRetries?: number } = {}
   ): Promise<TranscriptionResult> {
     // Create a properly named file to ensure correct format detection
     const fileName = (file as File).name || `audio_${Date.now()}.mp3`;
@@ -265,7 +267,7 @@ export class GladiaClient {
       }
 
       // Then transcribe the uploaded file
-      return this.transcribeAudio(uploadData.audio_url, options);
+      return this.transcribeAudio(uploadData.audio_url, options, waitOptions);
     } catch (error) {
       if (error instanceof GladiaError) {
         throw error;
