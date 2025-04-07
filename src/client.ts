@@ -137,7 +137,8 @@ export class GladiaClient {
    */
   async transcribeAudio(
     audioUrl: string,
-    options: TranscriptionOptions = {}
+    options: TranscriptionOptions = {},
+    waitOptions: { pollingInterval?: number; maxRetries?: number } = {}
   ): Promise<TranscriptionResult> {
     const mergedOptions = {
       ...this.defaultOptions,
@@ -173,7 +174,7 @@ export class GladiaClient {
       const resultUrl =
         response.result_url ||
         `${this.baseUrl}/v2/transcription/${response.id}`;
-      return this.waitForResult(resultUrl);
+      return this.waitForResult(resultUrl, waitOptions);
     } catch (error) {
       // Check for specific error types and provide better messages
       if (error instanceof GladiaError) {
